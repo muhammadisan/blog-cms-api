@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                   // Modern JS support
+    "module": "commonjs",                 // Cocok untuk Node.js
+    "rootDir": "src",                     // Source code di folder src
+    "outDir": "dist",                     // Output hasil kompilasi
+    "strict": true,                       // Mengaktifkan strict type checking
+    "esModuleInterop": true,              // Memungkinkan import default dari module CommonJS
+    "forceConsistentCasingInFileNames": true, // Cegah error case-sensitivity beda OS
+    "skipLibCheck": true,                 // Skip type checking file .d.ts untuk efisiensi
+    "typeRoots": ["./src/types", "./node_modules/@types"], // Custom types
+    "resolveJsonModule": true,            // (Opsional) jika kamu import file .json
+    "allowSyntheticDefaultImports": true  // Untuk import default non-ESModule
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

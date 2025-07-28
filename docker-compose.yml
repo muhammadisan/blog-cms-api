@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    env_file: .env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    restart: unless-stopped   # Optional: auto-restart on crash
+    environment:
+      - NODE_ENV=production   # Pastikan NODE_ENV tersedia
+      - MONGODB_URI_DOCKER=mongodb://mongo:27017/blog_cms
+
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped   # Optional: auto-restart MongoDB if error
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"         # Optional: allow access via Compass or Robo3T
+
+volumes:
+  mongo-data:
