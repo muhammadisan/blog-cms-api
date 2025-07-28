@@ -105,13 +105,11 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
 // Public: login
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.body);
     const { error } = loginSchema.validate(req.body);
     if (error) return res.status(400).json({ error: error.message });
 
     const user = await User.findOne({ username: req.body.username });
-    console.log(user);
-    console.log(req.body.password);
+
     if (!user || !(await user.comparePassword(req.body.password))) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
